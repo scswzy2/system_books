@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.book.dao.CategoryMapper">
+  <!-- 查询分类是否存在 -->
+  	<select id="findCategory" parameterType="String" resultType="Category">
+  		select * from system_book_category where category=#{category}
+  	</select>
+  	<!-- 添加新的分类 -->
+  	<insert id="addCategory" parameterType="String">
+  		insert into system_book_category(category) values(#{category})
+  	</insert>
+  	<!-- 循环查询分类 -->
+  	<select id="listCategory" resultType="Category">
+  		select * from system_book_category order by id desc
+  	</select>
+	<!-- 根据id删除分类（不能删除已经存在书籍的分类） -->
+  	<delete id="deleteCategory" parameterType="int">
+  	 delete from system_book_category where id=#{id}
+  	  and not exists(select * from system_book_info
+  	  where categoryId=#{id}) 
+  	</delete>
+  </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -16,25 +17,19 @@
 			    	<tr>
 			    		<td class="header" width="200">图书分类</td>
 			    		<td class="header" width="60">操作</td>
-			    	</tr>			    
-			    	<tr>
-			    		<td>小说</td>
-			    		<td><a href="#">删除</a></td>
-			    	</tr>			    
-			    	<tr>
-			    		<td>历史</td>
-			    		<td><a href="#">删除</a></td>
-			    	</tr>			    
-			    	<tr>
-			    		<td>玄幻</td>
-			    		<td><a href="#">删除</a></td>
-			    	</tr>			    
+			    	</tr>
+			    	<c:forEach items="${categories }" var="categ">
+			    		<tr>
+				    		<td>${categ.category }</td>
+				    		<td><a href="${pageContext.request.contextPath }/delete_category?id=${categ.id }">删除</a></td>
+				    	</tr>
+			    	</c:forEach>		    
 			    </table>
 			</div>
 			<div class="section-right">
 				<h2>添加分类信息</h2>
-				<form action="" method="post">
-					<p>分类名称：<input type="text" name="tname"  /><input type="submit" value=" 保 存 "  /></p>						
+				<form action="${pageContext.request.contextPath }/add_category_action" method="post">
+					<p>分类名称：<input type="text" name="category"  /><input type="submit" value=" 保 存 "  /></p>						
 			    </form>
 			</div>			
 			<div class="cf"></div>
