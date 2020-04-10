@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@page import="com.book.pojo.User"%>
 <div id="header">
     		<div id="tool-bar">&nbsp;&nbsp; 欢迎光临智远图书网，
 			[<a href="${pageContext.request.contextPath}/login">请登录</a>]

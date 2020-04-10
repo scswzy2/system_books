@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.book.dao.InfoMapper">
+  	<insert id="addInfo" parameterType="Info">
+  		insert into system_book_info(id,bookName,author,categoryId,publisher,price,bphoto)
+  		 values(#{id},#{bookName},#{author},#{categoryId},#{publisher},#{price},#{bphoto})
+  	</insert>
+  </mapper>

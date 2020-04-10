@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
  <!DOCTYPE HTML>
 <html>
   <head>
@@ -9,7 +10,7 @@
   <body>
     <div id="container">
     	<div id="header">
-    		<div id="tool-bar">&nbsp;&nbsp; 欢迎光临智远图书网，[<a href="user-login.html">请登录</a>]&nbsp;[<a href="user-regist.html">免费注册</a>]&nbsp;&nbsp;&nbsp;<a href="index.html">首页</a>&nbsp;|&nbsp;<a href="cart.html">购物车</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|&nbsp;<a href="#">帮助</a></div>
+    		<div id="tool-bar">&nbsp;&nbsp; 欢迎光临智远图书网，[<a href="${pageContext.request.contextPath }/login">请登录</a>]&nbsp;[<a href="user-regist.html">免费注册</a>]&nbsp;&nbsp;&nbsp;<a href="/index">首页</a>&nbsp;|&nbsp;<a href="cart.html">购物车</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|&nbsp;<a href="#">帮助</a></div>
     		<h1>智远图书网-<span style="font-size: 48px; font-family: Arial; font-weight: lighter;">Book</span></h1>
     	</div>
     	<form id="search-bar" action="" method="post">
@@ -21,14 +22,10 @@
     			<div class="box-left">
     				<div class="box-title">分类畅销榜</div>
     				<div class="box-content">
-						<p>·<a href="#">全部</a></p>
-    					<p>·<a href="#">文学</a></p>
-    					<p>·<a href="#">小说</a></p>
-    					<p>·<a href="#">青春文学</a></p>
-    					<p>·<a href="#">旅游</a></p>
-    					<p>·<a href="#">哲学</a></p>
-    					<p>·<a href="#">百科</a></p>
-    					<p>·<a href="#">恐怖小说</a></p>    					
+						<p>·<a href="#?id=0">全部</a></p>
+						<c:forEach items="${categories}" var="cate">
+							<p>·<a href="#?id=${cate.id}">${cate.category}</a></p>
+						</c:forEach>				
     				</div>
     			</div>
     		</div>

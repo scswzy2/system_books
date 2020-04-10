@@ -15,7 +15,7 @@ public class View_Welcome extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		// 跳转
-		request.getRequestDispatcher("/WEB-INF/jsp/user_login.jsp").forward(request, response);
+		request.getRequestDispatcher("/index").forward(request, response);
 		return;
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

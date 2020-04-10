@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.book.dao.CategoryMapper;
+import com.book.dao.InfoMapper;
 import com.book.pojo.Category;
+import com.book.pojo.Info;
 import com.book.tools.MyBatisUtil;
 
 public class BookService {
@@ -42,11 +44,31 @@ public class BookService {
 		return categories;
 		
 	}
+	/**
+	 * 根据id删除对应的分类
+	 * @param id 1-成功，0-失败
+	 * @return
+	 */
 	public int deleteCategory(Integer id) {
 		SqlSession sqlSession=MyBatisUtil.open();
 		id=sqlSession.getMapper(CategoryMapper.class).deleteCategory(id);
 		sqlSession.commit();
 		MyBatisUtil.close(sqlSession);
 		return id;
+	}
+	/**
+	 * 添加图书信息
+	 * @param info
+	 * @return 1-成功  0-失败
+	 */
+	public int addInfo(Info info) {
+		//保存返回结果
+		int result=0;
+		SqlSession sqlSession=MyBatisUtil.open();
+		result=sqlSession.getMapper(InfoMapper.class).addInfo(info);
+		
+		sqlSession.commit();
+		MyBatisUtil.close(sqlSession);
+		return result;
 	}
 }

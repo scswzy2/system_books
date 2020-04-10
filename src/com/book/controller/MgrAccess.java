@@ -12,22 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.book.pojo.Category;
 import com.book.service.BookService;
 
-@WebServlet("/index")
-public class IndexAccess extends HttpServlet {
+@WebServlet("/book_mgr")
+public class MgrAccess extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BookService bookService=new BookService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		
-		List<Category> categories=bookService.listCategory();
-		//把分类信息列表放入request中
+		 request.setCharacterEncoding("utf-8");
+		 List<Category> categories=bookService.listCategory();
+			//把分类信息列表放入request中
 		request.setAttribute("categories", categories);
-		
-		
-		request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request,response);
+			
+		 
+		 
+		 request.getRequestDispatcher("WEB-INF/jsp/book_mgr.jsp").forward(request, response);
+		 return;
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+
 }
